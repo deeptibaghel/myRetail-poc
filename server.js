@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 'user strict';
 
 const express = require('express');
@@ -50,5 +51,3 @@ else {
     console.log(`Server is listening on port ${port}`);
   });
 }
-
-
