@@ -5,13 +5,13 @@ myRetail wants to make its internal data available to any number of client devic
 
 The goal of this project is to create an end-to-end Proof-of-Concept for a products API, which will aggregate product data from multiple sources and return it as JSON to the caller. 
 
-As the product price data is more dynamic in nature, mySQL is used to store the same.
+As the product price data is more dynamic in nature, MySQL is used to store the same.
 Product details being static in nature, MongoDB is used to store it.
 
-* REST API is developed using Node.js express web application framework. 
+* REST API is developed using [Node.js](https://nodejs.org/en/) express web application framework. 
 * JWT has been used for user authentication. 
 * Self Signed certificate has been used for https deployment.
-* Mocha has been used as Unit Testing library.
+* Mocha has been used as Unit Testing library.s
 * Eslint has been used as a linting tool.
 * Postman can be used for testing the end points.
 * The hosted version is available at [https://warm-falls-23626.herokuapp.com/]
