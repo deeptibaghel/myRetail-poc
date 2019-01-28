@@ -39,17 +39,18 @@ require('./app/routes/route.js')(app);
 const env = process.env.NODE_ENV || 'local';
 
 //listen for requests
-const port = env === 'production' ? 443 : 3000 ;
+const port = 3000 ;
 
-module.exports = https.createServer(options, app).listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
-
-
-if(env === 'test') {
-  module.exports = http.createServer(app).listen(8080, () => {
-    console.log(`Server is listening on port 8080`);
+if(env === 'local') {
+  module.exports = https.createServer(options, app).listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
   });
 }
+
+
+module.exports = http.createServer(app).listen(8080, () => {
+  console.log(`Server is listening on port 8080`);
+});
+
 
 
