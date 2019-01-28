@@ -40,15 +40,15 @@ require('./app/routes/route.js')(app);
 const env = process.env.NODE_ENV || 'local';
 const port = process.env.PORT || 3000;
 
-// if(env === 'test') {
-//   module.exports = http.createServer(app).listen(port, () => {
-//     console.log(`Server is listening on port ${port}`);
-//   });
-// }
-// else {
+if(env === 'local') {
   module.exports = https.createServer(options, app).listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
-//}
+}
+else {
+  module.exports = http.createServer(app).listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+  });
+}
 
 
