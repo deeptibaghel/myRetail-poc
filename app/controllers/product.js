@@ -180,8 +180,44 @@ exports.updateInfo = (req, res) => {
 };
 
 
-// Find a single Product with the id
-exports.findOne = (req, res) => {
+// Find  Product price
+exports.findPrice = (req, res) => {
+  const { id } = req.params;
+
+  if(!id) {
+    return res.status(400).send({
+      message: "Product id is required to find the product"
+    });
+  }
+
+  const productPrice = new ProductPrice();
+
+  //find price
+  productPrice.find(id)
+    .then(resp => {
+      if(resp.length == 0) {
+        return res.status(404).send({
+          message: `Product price for id ${id} not found`
+        });
+      }
+      else {
+        res.send({
+          id: id,
+          current_price: {
+            value: resp[0].current_price,
+            currency_code: resp[0].currency_code,
+          }
+        });
+      }
+    }).catch(err => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while finding the product price"
+      });
+    });
+};
+
+// Find  Product price and description
+exports.findDetail = (req, res) => {
   const { id } = req.params;
 
   if(!id) {

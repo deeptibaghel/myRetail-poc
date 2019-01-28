@@ -41,5 +41,3 @@ if(process.env.JAWSDB_URL) {
 const connection = mysql.createConnection(db[process.env.NODE_ENV || 'local']);
 
 module.exports = connection;
-
-

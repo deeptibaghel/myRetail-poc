@@ -23,7 +23,10 @@ module.exports = (app) => {
   // Update the product description
   app.put('/products/update_info/:id', product.updateInfo);
 
+  // Retrieve Product price
+  app.get('/products/:id', product.findPrice);
+
   // Retrieve Product price and description
-  app.get('/products/:id', product.findOne);
+  app.get('/products/detail/:id', product.findDetail);
 
 };

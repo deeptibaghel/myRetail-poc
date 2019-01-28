@@ -96,7 +96,7 @@ describe('POST /products/create', () => {
   });
 });
 
-describe('PUT /products/update', () => {
+describe('PUT /products/update/:id', () => {
   it('should update product price', (done) => {
     request(app)
       .put(`/products/update/${15117729}`)
@@ -114,7 +114,7 @@ describe('PUT /products/update', () => {
   });
 });
 
-describe('DELETE /products/delete', () => {
+describe('DELETE /products/delete/:id', () => {
   it('should delete product price', (done) => {
     request(app)
       .delete(`/products/${16696652}`)
@@ -129,10 +129,28 @@ describe('DELETE /products/delete', () => {
   });
 });
 
-describe('GET /products/delete', () => {
+describe('GET /products/:id', () => {
+  it('should retrieve product price', (done) => {
+    request(app)
+      .get(`/products/detail/${15643793}`)
+      .set('Authorization', `Bearer ${token}`)
+      .then((response) => {
+        const { current_price } = response.body;
+        expect(response.statusCode).toBe(200);
+        expect(current_price.value).toBe(700);
+        expect(current_price.currency_code).toBe("USD");
+        done();
+      })
+      .catch(err => {
+        done(err);
+      });
+  });
+});
+
+describe('GET /products/detail/:id', () => {
   it('should retrieve product price with description', (done) => {
     request(app)
-      .get(`/products/${15643793}`)
+      .get(`/products/detail/${15643793}`)
       .set('Authorization', `Bearer ${token}`)
       .then((response) => {
         const { current_price, product_desc } = response.body;
