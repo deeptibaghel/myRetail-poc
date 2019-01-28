@@ -46,7 +46,7 @@ if(env === 'local') {
   });
 }
 
-const port = env === 'local' ? 8080 : 443;
+const port = process.env.PORT || 8080;
 
 module.exports = http.createServer(app).listen(port, () => {
   console.log(`Server is listening on port ${port}`);
