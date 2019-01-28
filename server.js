@@ -36,21 +36,19 @@ app.get('/', (req, res) => {
 // Require routes
 require('./app/routes/route.js')(app);
 
-const env = process.env.NODE_ENV || 'local';
-
 //listen for requests
+const env = process.env.NODE_ENV || 'local';
+const port = process.env.PORT || 3000;
 
-if(env === 'local') {
-  module.exports = https.createServer(options, app).listen(3000, () => {
-    console.log(`Server is listening on port 3000`);
+if(env === 'test') {
+  module.exports = http.createServer(app).listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
   });
 }
-
-const port = process.env.PORT || 8080;
-
-module.exports = http.createServer(app).listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
-
+else {
+  module.exports = https.createServer(options, app).listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+  });
+}
 
 
