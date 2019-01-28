@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 // Require routes
 require('./app/routes/route.js')(app);
 
-const env = process.env.NODE_ENV || 'test';
+const env = process.env.NODE_ENV || 'local';
 
 //listen for requests
 const port = env === 'production' ? 443 : 3000 ;
