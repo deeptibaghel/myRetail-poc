@@ -1,5 +1,6 @@
 
 create database myretail_db;
+use myretail_db;
 create table price (
     id int(8) primary key,
     current_price double not null,
@@ -11,6 +12,7 @@ create table price (
 
 
 create database myretail_test_db;
+use myretail_test_db;
 create table price (
     id int(8) primary key,
     current_price double not null,
