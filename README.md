@@ -73,7 +73,7 @@ Unit tests can be executed via command "npm test". Results should appear as belo
 <br>The JWT token returned, may be saved in a global environment variable say "token" of postman.
 Each endpoint should have an authorization of type "Bearer Token" and value = {{token}}.
 
-**Large Scale Deployment**
+## Large Scale Deployment
 
 API gateway such as [tyk](https://tyk.io/) may be used to manage the API for faster response and better scalability.
 CQRS framework like [Axon](https://axoniq.io/) may be used to create the read only replica of price database for faster read queries. 
