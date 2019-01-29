@@ -7,7 +7,7 @@ The goal of this project is to create an end-to-end Proof-of-Concept for a produ
 
 As the product price data is more dynamic in nature, MySQL is used to store the same.
 Product details being static in nature, MongoDB is used to store it. 
-The hosted version of the app is available at [https://warm-falls-23626.herokuapp.com/]().
+The hosted version of the app is available at [https://warm-falls-23626.herokuapp.com/](https://warm-falls-23626.herokuapp.com/).
 Development is done on [Node.js](https://nodejs.org/en/) express web application framework. 
 
 * JWT has been used for user authentication. 
@@ -32,8 +32,8 @@ Development is done on [Node.js](https://nodejs.org/en/) express web application
   
   
 **Postman collection** for testing the endpoints can be downloaded from the links below:
-* local test: [https://www.getpostman.com/collections/d77b9af7ef9d68099ffc]()
-* heroku test: [https://www.getpostman.com/collections/11c0eccd939a5bdd2d70]()
+* local test: [https://www.getpostman.com/collections/d77b9af7ef9d68099ffc](https://www.getpostman.com/collections/d77b9af7ef9d68099ffc)
+* heroku test: [https://www.getpostman.com/collections/11c0eccd939a5bdd2d70](https://www.getpostman.com/collections/11c0eccd939a5bdd2d70)
 
 The first endpoint to execute is /users/authenticate, username: test, password: test
 The JWT token can then be saved in a global environment variable say "token" of postman.
