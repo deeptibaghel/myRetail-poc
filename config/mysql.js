@@ -20,19 +20,12 @@ const db = {
 //extract db info from heroku env
 if(process.env.JAWSDB_URL) {
 
-  const arr = process.env.JAWSDB_URL.split(':')
-  const user = arr[1].substr(2);
-  let pair = arr[2].split('@');
-  const password = pair[0];
-  const host = pair[1];
-  pair = arr[3].split('/');
-  const database = pair[1];
-
+  const arr = process.env.JAWSDB_URL.split(/[:@/]+/);
   db['production'] = {
-    host     : host,
-    user     : user,
-    password : password,
-    database : database
+    host     : arr[3],
+    user     : arr[1],
+    password : arr[2],
+    database : arr[5]
   };
 
 }
