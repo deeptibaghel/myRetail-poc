@@ -10,11 +10,12 @@ Product details being static in nature, MongoDB is used to store it. The hosted 
 Development is done on [Node.js](https://nodejs.org/en/) express web application framework. 
 
 * JWT has been used for user authentication. 
-* Self Signed certificate has been used for https deployment in local mode.
-* Mocha has been used Unit Testing.
+* Mocha has been used as a Unit Testing framework.
 * Eslint has been used as a linting tool.
+* Self signed certificate has been used for https deployment in local mode.
 
 **Steps for local setup are as below**:
+```
 1. Clone the repository.
 2. Install MongoDB and set the connection string in file config/mongodb.js. Below are the steps for docker version:
     docker pull mongodb  
@@ -24,6 +25,7 @@ Development is done on [Node.js](https://nodejs.org/en/) express web application
 4. Create the database and tables using file mysql_script.sql
 5. Test using command "npm test".
 6. Start the service using "npm start".
+```
 
 **Postman collection** for testing the endpoints can be downloaded from the links below:
 * local test: [https://www.getpostman.com/collections/d77b9af7ef9d68099ffc]()
