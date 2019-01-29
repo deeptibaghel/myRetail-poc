@@ -6,7 +6,8 @@ myRetail wants to make its internal data available to any number of client devic
 The goal of this project is to create an end-to-end Proof-of-Concept for a products API, which will aggregate product data from multiple sources and return it as JSON to the caller. 
 
 As the product price data is more dynamic in nature, MySQL is used to store the same.
-Product details being static in nature, MongoDB is used to store it. The hosted version of the app is available at [https://warm-falls-23626.herokuapp.com/]
+Product details being static in nature, MongoDB is used to store it. 
+The hosted version of the app is available at [https://warm-falls-23626.herokuapp.com/]().
 Development is done on [Node.js](https://nodejs.org/en/) express web application framework. 
 
 * JWT has been used for user authentication. 
@@ -40,6 +41,6 @@ Each endpoint should have an authorization of type "Bearer Token" and value = {{
 
 **Large Scale Deployment**
 
-API gateway such as [tyk](https://tyk.io/) can be used to manage the API for faster response and better scalability.
-CQRS pattern can be used to create the read only replica of price database for faster read queries.
+API gateway such as [tyk](https://tyk.io/) may be used to manage the API for faster response and better scalability.
+CQRS framework like [Axon](https://axoniq.io/) may be used to create the read only replica of price database for faster read queries. 
 
