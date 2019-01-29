@@ -27,11 +27,11 @@ before(() => {
   });
 });
 
-describe('GET /', () => {
+describe('GET /users/', () => {
   // token not being sent - should respond with a 401
   it('should require authorization', (done) => {
     request(app)
-      .get('/')
+      .get('/users/')
       .expect(401)
       .end((err) => {
         if(err)

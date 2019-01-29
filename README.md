@@ -7,37 +7,71 @@ The goal of this project is to create an end-to-end Proof-of-Concept for a produ
 
 As the product price data is more dynamic in nature, MySQL is used to store the same.
 Product details being static in nature, MongoDB is used to store it. 
-The hosted version of the app is available at [https://warm-falls-23626.herokuapp.com/](https://warm-falls-23626.herokuapp.com/).
 Development is done on [Node.js](https://nodejs.org/en/) express web application framework. 
+The hosted version of the app is available at [https://warm-falls-23626.herokuapp.com/](https://warm-falls-23626.herokuapp.com/).
 
-* JWT has been used for user authentication. 
+
+* [JWT](https://jwt.io/) has been used for user authentication. 
 * Mocha has been used as a Unit Testing framework.
 * Eslint has been used as a linting tool.
 * Self signed certificate has been used for https deployment in local mode.
 
   
-**Steps for local setup are as below**:
+## Local Installation
 ```
-1. Clone the repository.
-2. Install MongoDB and set the connection string in file config/mongodb.js. 
+1. Install Node.js and npm (Tested on Node v8.10.0 and npm 6.1.0).  
+2. Clone the repository.
+3. Install the required node modules using "npm install".
+4. Install MongoDB and set the connection string in file config/mongodb.js . 
    Below are the steps for docker version:
     docker pull mongodb  
     docker run -d -p 27017:27017 --name mongo mongo  
         
-3. Install MySQL database and set mysql connection parameters in file config/mysql.js
+5. Install MySQL database and set mysql connection parameters in file config/mysql.js
 4. Create the database and tables using file mysql_script.sql
-5. Test using command "npm test".
 6. Start the service using "npm start".
 ```
-  
-  
-**Postman collection** for testing the endpoints can be downloaded from the links below:
-* local test: [https://www.getpostman.com/collections/d77b9af7ef9d68099ffc](https://www.getpostman.com/collections/d77b9af7ef9d68099ffc)
-* heroku test: [https://www.getpostman.com/collections/11c0eccd939a5bdd2d70](https://www.getpostman.com/collections/11c0eccd939a5bdd2d70)
 
-The first endpoint to execute is /users/authenticate, username: test, password: test
-The JWT token can then be saved in a global environment variable say "token" of postman.
-Each endpoint should have an authorization of type "Bearer Token" and value = {{token}}
+## Unit Testing
+Unit tests can be executed via command "npm test". Results should appear as below:
+    
+    > export NODE_ENV=test && mocha app/**/*.test.js --exit
+    
+      GET /users/
+        ✓ should require authorization
+        ✓ responds with JSON
+    
+      POST /products/create_info
+        ✓ should create product description
+    
+      POST /products/create
+        ✓ should create product price
+    
+      PUT /products/update/:id
+        ✓ should update product price (41ms)
+    
+      DELETE /products/delete/:id
+        ✓ should delete product price
+    
+      GET /products/:id
+        ✓ should retrieve product price
+    
+      GET /products/detail/:id
+        ✓ should retrieve product price with description
+    
+    
+      8 passing (1s)
+
+
+##  Application Testing  
+- Install [Postman](https://www.getpostman.com/) utility.
+- Download and import the **Postman collection** for testing the endpoints from the links given below:
+    - local test: [https://www.getpostman.com/collections/d77b9af7ef9d68099ffc](https://www.getpostman.com/collections/d77b9af7ef9d68099ffc)
+    - heroku test: [https://www.getpostman.com/collections/11c0eccd939a5bdd2d70](https://www.getpostman.com/collections/11c0eccd939a5bdd2d70)
+
+- Perform login to the application using the endpoint `/users/authenticate`, username: test, password: test .
+<br>The JWT token returned, may be saved in a global environment variable say "token" of postman.
+Each endpoint should have an authorization of type "Bearer Token" and value = {{token}}.
 
 **Large Scale Deployment**
 
