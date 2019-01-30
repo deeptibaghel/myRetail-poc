@@ -7,14 +7,20 @@ The goal of this project is to create an end-to-end Proof-of-Concept for a produ
 
 As the product price data is more dynamic in nature, MySQL is used to store the same.
 Product details being static in nature, MongoDB is used to store it. 
-Development is done on [Node.js](https://nodejs.org/en/) express web application framework. 
 The hosted version of the app is available at [https://warm-falls-23626.herokuapp.com/](https://warm-falls-23626.herokuapp.com/).
 
+###Schematic Diagram
+![Schematic](img/architecture.png)
 
-* [JWT](https://jwt.io/) has been used for user authentication. 
-* Mocha has been used as a Unit Testing framework.
-* Eslint has been used as a linting tool.
-* Self signed certificate has been used for https deployment in local mode.
+
+#### Technology Stack
+- [Node.js](https://nodejs.org/en/) with [Express](https://expressjs.com/) web application framework
+- MongoDB 4.0.5
+- MySQL 5.7
+- [JWT](https://jwt.io/) for user authentication. 
+- Mocha as a Unit Testing framework.
+- Eslint for code linting.
+- Self signed certificate for https deployment in local mode.
 
   
 ## Local Installation
@@ -78,3 +84,177 @@ Each endpoint should have an authorization of type "Bearer Token" and value = {{
 API gateway such as [tyk](https://tyk.io/) may be used to manage the API for faster response and better scalability.
 CQRS framework like [Axon](https://axoniq.io/) may be used to create the read only replica of price database for faster read queries. 
 
+##REST Endpoints
+
+### Authentication Service
+POST /users/authenticate - Authenticates User
+
+    Request
+    /users/authenticate 
+    {
+    	"username": "username",
+    	"password": "password"
+    }
+    
+    Success Response
+    {
+        "id": 1,
+        "username": "username",
+        "password": "password",
+        "firstName": "Test",
+        "lastName": "User",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTU0ODc2ODU0NX0.WjF7qGrNpB1vv-JZNQAXKw2n0AaQ6AqWizdd-q1kCtM"
+    }
+    
+    Response on authentication failure
+    {
+        "message": "Username or password is incorrect"
+    }
+
+### Product Pricing Service  
+POST /products/create - Creates product price 
+
+    Request
+    /products/create
+    {
+    	"id": 15117736,
+    	"current_price": { "value": 5.5, "currency_code": "USD" }
+    }
+    
+    Success Response
+    {
+        "message": "Price record inserted"
+    }
+    
+    Response if record exists
+    {
+        "message": "Product price for id 15117736 already exists"
+    }
+
+
+PUT /products/update/:id - Updates product price using id
+
+    Request
+    /products/update/15117736
+    {
+    	"current_price": { "value" : 9.3,	"currency_code": "USD" }
+    }
+    
+    Success Response
+    {
+        "message": "Product price updated"
+    }
+    
+    Response if record does exist
+    {
+        "message": "Product price for id 15117737 not found"
+    }
+
+GET /products/:id - Retrieves product price using id 
+    
+    Request
+    /products/15117736
+    
+    Success Response
+    {
+        "id": "15117736",
+        "current_price": {
+            "value": 5.5,
+            "currency_code": "USD"
+        }
+    }
+    
+    Response if record does exist
+    {
+        "message": "Product price for id 15117736 not found"
+    }
+    
+DELETE /products/delete/:id - Deletes product price using id
+
+    Request
+    /products/15117736
+    Success Response
+    {
+        "message": "Price deleted"
+    }
+    
+    Response if record does exist
+    {
+        "message": "Price not found"
+    }
+    
+
+### Product Information Service  
+POST /products/create_info - Creates product information 
+
+    Request
+    /products/create_info
+    {
+    	"id": 15117736,
+    	"description": "Iphone 8"
+    }
+    
+    Success Response
+    {
+        "_id": "5c514843df84180017564fbd",
+        "id": 15117737,
+        "description": "Iphone 8",
+        "createdAt": "2019-01-30T06:46:27.667Z",
+        "updatedAt": "2019-01-30T06:46:27.667Z",
+    }
+    
+    Response if record exists
+    {
+        "message": "Product with id 15117736 already exists"
+    }
+    
+PUT /products/update_info/:id - Updates product information using id
+    
+    Request
+    /products/update_info/15117736
+    {
+    	"description": "Samsung Galaxy"
+    }
+    
+    Success Response
+    {
+        "_id": "5c4f0a2e8499b7001713e379",
+        "id": 15117736,
+        "description": "Samsung Galaxy",
+        "createdAt": "2019-01-28T13:57:02.295Z",
+        "updatedAt": "2019-01-30T06:49:50.890Z",
+    }
+    
+    Response if record does exist
+    {
+        "message": "Product not found with id 15117736"
+    }
+
+
+### Combined Product price+information service
+
+GET products/detail/:id - Retrieves product price and information using id
+    
+    Request
+    products/detail/15117736
+    
+    Success Response
+    {
+        "id": "15117736",
+        "current_price": {
+            "value": 5.5,
+            "currency_code": "USD"
+        },
+        "product_desc": "Samsung Galaxy"
+    }
+    
+    Response if product price not found
+    {
+        "message": "Product price for id 15117736 not found"
+    }
+    
+    Response if product information not found
+    {
+        "message": "Product not found with id 15117738"
+    }
+    
