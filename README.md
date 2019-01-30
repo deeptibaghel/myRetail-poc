@@ -81,7 +81,7 @@ Each endpoint should have an authorization of type "Bearer Token" and value = {{
 ## REST Endpoints
 
 ### Authentication Service
-POST /users/authenticate - Authenticates User
+**POST /users/authenticate - Authenticates User**
 
     Request
     /users/authenticate 
@@ -106,7 +106,7 @@ POST /users/authenticate - Authenticates User
     }
 
 ### Product Pricing Service  
-POST /products/create - Creates product price 
+**POST /products/create - Creates product price** 
 
     Request
     /products/create
@@ -129,7 +129,7 @@ POST /products/create - Creates product price
     }
 
 
-PUT /products/update/:id - Updates product price using id
+**PUT /products/update/:id - Updates product price using id**
 
     Request
     /products/update/15117736
@@ -150,7 +150,7 @@ PUT /products/update/:id - Updates product price using id
         "message": "Product price for id 15117737 not found"
     }
 
-GET /products/:id - Retrieves product price using id 
+**GET /products/:id - Retrieves product price using id** 
     
     Request
     /products/15117736
@@ -169,7 +169,7 @@ GET /products/:id - Retrieves product price using id
         "message": "Product price for id 15117736 not found"
     }
     
-DELETE /products/delete/:id - Deletes product price using id
+**DELETE /products/delete/:id - Deletes product price using id**
 
     Request
     /products/15117736
@@ -186,7 +186,7 @@ DELETE /products/delete/:id - Deletes product price using id
     
 
 ### Product Information Service  
-POST /products/create_info - Creates product information 
+**POST /products/create_info - Creates product information** 
 
     Request
     /products/create_info
@@ -209,7 +209,7 @@ POST /products/create_info - Creates product information
         "message": "Product with id 15117736 already exists"
     }
     
-PUT /products/update_info/:id - Updates product information using id
+**PUT /products/update_info/:id - Updates product information using id**
     
     Request
     /products/update_info/15117736
@@ -234,7 +234,7 @@ PUT /products/update_info/:id - Updates product information using id
 
 ### Combined Product price+information service
 
-GET products/detail/:id - Retrieves product price and information using id
+**GET products/detail/:id - Retrieves product price and information using id**
     
     Request
     products/detail/15117736
