@@ -112,7 +112,10 @@ POST /products/create - Creates product price
     /products/create
     {
     	"id": 15117736,
-    	"current_price": { "value": 5.5, "currency_code": "USD" }
+    	"current_price": { 
+    	    "value": 5.5, 
+    	    "currency_code": "USD" 
+    	}
     }
     
     Success Response
@@ -131,7 +134,10 @@ PUT /products/update/:id - Updates product price using id
     Request
     /products/update/15117736
     {
-    	"current_price": { "value" : 9.3,	"currency_code": "USD" }
+    	"current_price": { 
+    	    "value" : 9.3, 
+    	    "currency_code": "USD"
+    	 }
     }
     
     Success Response
@@ -139,7 +145,7 @@ PUT /products/update/:id - Updates product price using id
         "message": "Product price updated"
     }
     
-    Response if record does exist
+    Response if record does not exist
     {
         "message": "Product price for id 15117737 not found"
     }
@@ -158,7 +164,7 @@ GET /products/:id - Retrieves product price using id
         }
     }
     
-    Response if record does exist
+    Response if record does not exist
     {
         "message": "Product price for id 15117736 not found"
     }
@@ -167,12 +173,13 @@ DELETE /products/delete/:id - Deletes product price using id
 
     Request
     /products/15117736
+    
     Success Response
     {
         "message": "Price deleted"
     }
     
-    Response if record does exist
+    Response if record does not exist
     {
         "message": "Price not found"
     }
@@ -219,7 +226,7 @@ PUT /products/update_info/:id - Updates product information using id
         "updatedAt": "2019-01-30T06:49:50.890Z",
     }
     
-    Response if record does exist
+    Response if record does not exist
     {
         "message": "Product not found with id 15117736"
     }
