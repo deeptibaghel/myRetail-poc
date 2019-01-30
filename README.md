@@ -9,11 +9,7 @@ As the product price data is more dynamic in nature, MySQL is used to store the 
 Product details being static in nature, MongoDB is used to store it. 
 The hosted version of the app is available at [https://warm-falls-23626.herokuapp.com/](https://warm-falls-23626.herokuapp.com/).
 
-###Schematic Diagram
-![Schematic](img/architecture.png)
-
-
-#### Technology Stack
+### Technology Stack
 - [Node.js](https://nodejs.org/en/) with [Express](https://expressjs.com/) web application framework
 - MongoDB 4.0.5
 - MySQL 5.7
@@ -21,6 +17,9 @@ The hosted version of the app is available at [https://warm-falls-23626.herokuap
 - Mocha as a Unit Testing framework.
 - Eslint for code linting.
 - Self signed certificate for https deployment in local mode.
+
+### Schematic Diagram
+![Schematic](img/architecture.png)
 
   
 ## Local Installation
@@ -258,3 +257,6 @@ GET products/detail/:id - Retrieves product price and information using id
         "message": "Product not found with id 15117738"
     }
     
+
+### JWT Workflow
+![Jwt](img/jwt.jpg)
