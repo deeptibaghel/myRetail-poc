@@ -68,7 +68,7 @@ Unit tests can be executed via command "npm test". Results should appear as belo
       8 passing (1s)
 
 
-##  Application Testing  
+##  API Testing  
 - Install [Postman](https://www.getpostman.com/) utility.
 - Download and import the **Postman collection** for testing the endpoints from the links given below:
     - local test: [https://www.getpostman.com/collections/d77b9af7ef9d68099ffc](https://www.getpostman.com/collections/d77b9af7ef9d68099ffc)
@@ -78,12 +78,7 @@ Unit tests can be executed via command "npm test". Results should appear as belo
 <br>The JWT token returned, may be saved in a global environment variable say "token" of postman.
 Each endpoint should have an authorization of type "Bearer Token" and value = {{token}}.
 
-## Large Scale Deployment
-
-API gateway such as [tyk](https://tyk.io/) may be used to manage the API for faster response and better scalability.
-CQRS framework like [Axon](https://axoniq.io/) may be used to create the read only replica of price database for faster read queries. 
-
-##REST Endpoints
+## REST Endpoints
 
 ### Authentication Service
 POST /users/authenticate - Authenticates User
@@ -260,3 +255,9 @@ GET products/detail/:id - Retrieves product price and information using id
 
 ### JWT Workflow
 ![Jwt](img/jwt.jpg)
+
+
+## Large Scale Deployment
+
+API gateway such as [tyk](https://tyk.io/) may be used to manage the API for faster response and better scalability.
+CQRS framework like [Axon](https://axoniq.io/) may be used to create the read only replica of price database for faster read queries. 
