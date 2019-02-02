@@ -1,4 +1,3 @@
-/* eslint-disable semi */
 'user strict';
 
 const express = require('express');
