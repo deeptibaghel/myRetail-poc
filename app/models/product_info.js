@@ -17,9 +17,9 @@ mongoose.connect(mongodbConfig.url, {
   useNewUrlParser: true,
   useCreateIndex: true,
 }).then(() => {
-  //console.log("Successfully connected to mongodb database");
-}).catch(() => {
-  //console.log('Could not connect to mongodb database. Exiting now...', err);
+  console.log("Successfully connected to mongodb database");
+}).catch((err) => {
+  console.log('Could not connect to mongodb database. Exiting now...', err);
   process.exit();
 });
 

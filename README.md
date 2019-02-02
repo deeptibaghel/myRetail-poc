@@ -28,10 +28,10 @@ The hosted version of the app is available at [https://warm-falls-23626.herokuap
 2. Clone the repository.
 3. Install the required node modules using "npm install".
 4. Install MongoDB and set the connection string in file config/mongodb.js . 
-   Below are the steps for docker version:
+   Below are the steps for setting up the docker version:
     docker pull mongodb  
     docker run -d -p 27017:27017 --name mongo mongo  
-        
+    docker start mongo    
 5. Install MySQL database and set mysql connection parameters in file config/mysql.js
 4. Create the database and tables using file mysql_script.sql
 6. Start the service using "npm start".
